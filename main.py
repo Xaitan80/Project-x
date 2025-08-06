@@ -1,39 +1,37 @@
-#!/usr/bin/env python3
 import requests
 from bs4 import BeautifulSoup
 
-def fetch_telia_status():
-    url = "https://www.telia.se/privat/driftinformation"
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, "html.parser")
+def fetch_bredband2_incidents():
+    url = "https://www.bredband2.com/privat/kundservice/driftinformation"
+    r = requests.get(url)
+    r.raise_for_status()
+    soup = BeautifulSoup(r.text, "html.parser")
 
-    # Simple example: grab page title or some known class
-    status_summary = soup.find("h1")  # placeholder
-    if status_summary:
-        return f"Telia: {status_summary.text.strip()}"
-    return "Telia: Unable to fetch status"
+    # Adjust this selector if needed
+    incidents = []
+    for div in soup.select("div.drift-card__text"):
+        text = div.get_text(strip=True)
+        if text:
+            incidents.append(text)
 
-def fetch_telenor_status():
-    url = "https://www.telenor.se/kundservice/driftinformation/"
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, "html.parser")
+    if incidents:
+        return "Bredband2 Incidents:\n" + "\n".join(f"- {inc}" for inc in incidents)
+    else:
+        return "Bredband2: No incidents found"
 
-    # You’ll need to inspect the HTML structure to improve this
-    issues = soup.find_all("li")  # placeholder
-    return f"Telenor: Found {len(issues)} items on status page"
-
-def generate_markdown(statuses):
-    with open("dashboard.md", "w", encoding="utf-8") as f:
-        f.write("# 🇸🇪 ISP Status Dashboard\n\n")
-        f.write("_Last updated manually_\n\n")
-        for status in statuses:
-            f.write(f"## {status}\n\n")
+def generate_markdown_and_html(status_list):
+    markdown = "\n\n".join(status_list)
+    html = f"""<!DOCTYPE html>
+<html>
+<head><title>Status Dashboard</title></head>
+<body>
+<pre>{markdown}</pre>
+</body>
+</html>"""
+    with open("status.html", "w", encoding="utf-8") as f:
+        f.write(html)
+    print("Dashboard updated: status.html")
 
 if __name__ == "__main__":
-    statuses = [
-        fetch_telia_status(),
-        fetch_telenor_status()
-        # Add more ISPs here
-    ]
-    generate_markdown(statuses)
-    print("✅ Dashboard generated as `dashboard.md`")
+    status = fetch_bredband2_incidents()
+    generate_markdown_and_html([status])
