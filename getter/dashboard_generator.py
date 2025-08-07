@@ -51,15 +51,13 @@ def generate_landing_html(region_statuses, output_path="docs/index.html"):
     Path(output_path).write_text("\n".join(html), encoding="utf-8")
 
 
-def generate_region_html(region, dashboard, output_path=None):
-    if output_path is None:
-        output_path = f"docs/aws-{region}.html"
-    Path("docs").mkdir(exist_ok=True)  # Ensure docs directory exists
 
+
+def generate_region_html(region, dashboard, output_path, provider="AWS"):
     html = [
         "<html><head>",
         '<meta charset="UTF-8">',
-        f"<title>AWS {region} - Service Status</title>",
+        f"<title>{provider} {region} - Service Status</title>",
         "<style>",
         """
         body { font-family: Arial, sans-serif; background: #f9f9f9; padding: 20px; }
@@ -67,13 +65,13 @@ def generate_region_html(region, dashboard, output_path=None):
         .service-card h2 { margin-top: 0; }
         a.rss-link { text-decoration: none; font-weight: bold; color: #ff6600; }
         a.rss-link:hover { text-decoration: underline; }
+        .back-link { display: inline-block; margin-bottom: 20px; font-size: 14px; }
         """,
         "</style>",
         "</head><body>",
-        f"<a class='back-link' href='index.html'>&larr; Back to Overview</a>",
-        f"<h1>📍 AWS Status for {region.upper()}</h1>",
+        f"<h1>📍 {provider} Status for {region.upper()}</h1>",
         f"<p><em>Last updated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}</em></p>",
-
+        "<a class='back-link' href='index.html'>&larr; Back to Overview</a>",
         "<div class='services'>"
     ]
 
@@ -83,6 +81,7 @@ def generate_region_html(region, dashboard, output_path=None):
         title = service_data['title']
         summary = service_data['summary']
         published = service_data['published']
+        link = service_data['link']
         feed_url = service_data['feed_url']
 
         html.append("<div class='service-card'>")
@@ -93,8 +92,10 @@ def generate_region_html(region, dashboard, output_path=None):
             html.append(f"<p>{summary}</p>")
         if published:
             html.append(f"<p><em>{published}</em></p>")
-        html.append(f"<a class='rss-link' href='{feed_url}' target='_blank'>📡 View on Provider</a>")
+        if feed_url:
+            html.append(f"<a class='rss-link' href='{feed_url}' target='_blank'>📡 View on Provider</a>")
         html.append("</div>")
 
     html.append("</div></body></html>")
     Path(output_path).write_text("\n".join(html), encoding="utf-8")
+
