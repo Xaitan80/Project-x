@@ -34,16 +34,16 @@ if __name__ == "__main__":
     for region, dashboard in region_dashboards.items():
         output_file = f"docs/{region}.html"
 
-    if region.startswith("aws-"):
-        clean_region = region[len("aws-"):]
-        provider = "AWS"
-    elif region.startswith("gcp-"):
-        clean_region = region[len("gcp-"):]
-        provider = "GCP"
-    else:
-        clean_region = region
-        provider = "Cloud"
+        if region.startswith("aws-"):
+            clean_region = region[len("aws-"):]
+            provider = "AWS"
+        elif region.startswith("gcp-"):
+            clean_region = region[len("gcp-"):]
+            provider = "GCP"
+        else:
+            clean_region = region
+            provider = "Cloud"
 
-    generate_region_html(clean_region, dashboard, output_file, provider=provider)
+        generate_region_html(clean_region, dashboard, output_file, provider=provider)
 
     print("✅ All dashboards generated.")
