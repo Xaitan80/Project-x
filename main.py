@@ -29,7 +29,7 @@ if __name__ == "__main__":
     # Output
     Path("docs").mkdir(exist_ok=True)
 
-    generate_landing_html(region_statuses, "docs/services-status.html")
+    generate_landing_html(region_statuses, "docs/index.html")
 
     for region, dashboard in region_dashboards.items():
         output_file = f"docs/{region}.html"

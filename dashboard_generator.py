@@ -1,7 +1,7 @@
 from pathlib import Path
 from datetime import datetime, timezone
 
-def generate_landing_html(region_statuses, output_path="docs/services-status.html"):
+def generate_landing_html(region_statuses, output_path="docs/index.html"):
     Path("docs").mkdir(exist_ok=True)  # Ensure docs directory exists
 
     html = [
