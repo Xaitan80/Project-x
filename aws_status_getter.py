@@ -5,6 +5,8 @@ from common.feed_utils import (
     classify_status
 )
 from pathlib import Path
+from datetime import datetime, timezone
+
 
 def generate_landing_html(region_statuses, output_path):
     html = [
@@ -56,6 +58,8 @@ def generate_region_html(region, dashboard, output_path):
         "</style>",
         "</head><body>",
         f"<h1>📍 AWS Status for {region.upper()}</h1>",
+        f"<p><em>Last updated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}</em></p>",
+
         "<div class='services'>"
     ]
 
