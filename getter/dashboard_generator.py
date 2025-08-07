@@ -21,6 +21,7 @@ def generate_landing_html(region_statuses, output_path="docs/index.html"):
         "</head><body>",
         "<h1>🌍 Cloud Services Health Overview</h1>"
         f"<p><em>Last updated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}</em></p>",
+        "<div class='services'>"
     ]
 
     for region, status in region_statuses.items():
@@ -69,8 +70,10 @@ def generate_region_html(region, dashboard, output_path=None):
         """,
         "</style>",
         "</head><body>",
+        f"<a class='back-link' href='index.html'>&larr; Back to Overview</a>",
         f"<h1>📍 AWS Status for {region.upper()}</h1>",
         f"<p><em>Last updated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}</em></p>",
+
         "<div class='services'>"
     ]
 
