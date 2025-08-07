@@ -4,9 +4,9 @@ from common.feed_utils import (
     extract_service_name,
     classify_status
 )
+from gcp_status_europe_north2 import collect_gcp_dashboard
 from pathlib import Path
 from datetime import datetime, timezone
-
 
 def generate_landing_html(region_statuses, output_path):
     html = [
@@ -30,12 +30,7 @@ def generate_landing_html(region_statuses, output_path):
     for region, status in region_statuses.items():
         emoji = "🟢" if status == "healthy" else "🔴"
         html.append("<div class='region-card'>")
-        label = f"AWS-{region}"
-        html.append(f"<span class='status-icon'>{emoji}</span><a href='aws-{region}.html'><h2>{label}</h2></a>")
-
-        #html.append(f"<span class='status-icon'>{emoji}</span><a href='{region}.html'><h2>{label}</h2></a>")
-
-        '''html.append(f"<span class='status-icon'>{emoji}</span><a href='{region}.html'><h2>{region}</h2></a>")'''
+        html.append(f"<span class='status-icon'>{emoji}</span><a href='{region}.html'><h2>{region}</h2></a>")
         html.append("</div>")
 
     html.append("</body></html>")
@@ -46,7 +41,7 @@ def generate_region_html(region, dashboard, output_path):
     html = [
         "<html><head>",
         '<meta charset="UTF-8">',
-        f"<title>AWS{region} - Service Status</title>",
+        f"<title>{region} - Service Status</title>",
         "<style>",
         """
         body { font-family: Arial, sans-serif; background: #f9f9f9; padding: 20px; }
@@ -57,9 +52,8 @@ def generate_region_html(region, dashboard, output_path):
         """,
         "</style>",
         "</head><body>",
-        f"<h1>📍 AWS Status for {region.upper()}</h1>",
+        f"<h1>📍 Status for {region}</h1>",
         f"<p><em>Last updated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}</em></p>",
-
         "<div class='services'>"
     ]
 
@@ -87,7 +81,7 @@ def generate_region_html(region, dashboard, output_path):
     Path(output_path).write_text("\n".join(html), encoding="utf-8")
 
 
-def collect_dashboard(feed_file_path):
+def collect_aws_dashboard(feed_file_path):
     rss_urls = load_rss_urls(feed_file_path)
     dashboard = []
     healthy = True
@@ -110,7 +104,6 @@ def collect_dashboard(feed_file_path):
                 "feed_url": url
             })
         else:
-            # No data = treat as green
             dashboard.append({
                 "name": service_name,
                 "emoji": "🟢",
@@ -126,24 +119,30 @@ def collect_dashboard(feed_file_path):
 
 if __name__ == "__main__":
     input_files = {
-        "eu-north-1": "input/rss-eu-north-1.txt",
-        "eu-central-1": "input/rss-eu-central-1.txt"
+        "AWS-eu-north-1": "input/rss-eu-north-1.txt",
+        "AWS-eu-central-1": "input/rss-eu-central-1.txt"
     }
 
     region_dashboards = {}
     region_statuses = {}
 
+    # Collect AWS data
     for region, filepath in input_files.items():
-        dashboard, status = collect_dashboard(filepath)
+        dashboard, status = collect_aws_dashboard(filepath)
         region_dashboards[region] = dashboard
         region_statuses[region] = status
+
+    # Collect GCP data
+    gcp_dashboard, gcp_status = collect_gcp_dashboard()
+    region_dashboards["GCP-europe-north2"] = gcp_dashboard
+    region_statuses["GCP-europe-north2"] = gcp_status
 
     # Generate landing page
     generate_landing_html(region_statuses, "dashboards/services-status.html")
 
     # Generate one page per region
     for region, dashboard in region_dashboards.items():
-        region_file = f"dashboards/aws-{region}.html"
+        region_file = f"dashboards/{region}.html"
         generate_region_html(region, dashboard, region_file)
 
     print("✅ All dashboards generated.")
