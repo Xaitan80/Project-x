@@ -1,7 +1,7 @@
 # main.py
-from aws_status_getter import collect_aws_dashboard
-from gcp_status_europe_north2 import collect_gcp_dashboard
-from dashboard_generator import generate_landing_html, generate_region_html
+from getter.aws_status_getter import collect_aws_dashboard
+from getter.gcp_status_europe_north2 import collect_gcp_dashboard
+from getter.dashboard_generator import generate_landing_html, generate_region_html
 
 from pathlib import Path
 
