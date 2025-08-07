@@ -3,24 +3,85 @@
 <title>Cloud Service Dashboard</title>
 <style>
 
-        body { font-family: Arial, sans-serif; padding: 20px; background: #f2f2f2; }
-        .region-card { background: white; padding: 15px; margin-bottom: 10px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .region-card h2 { margin: 0; display: inline; }
-        .status-icon { font-size: 24px; margin-right: 10px; vertical-align: middle; }
-        a { text-decoration: none; color: #0077cc; font-size: 18px; }
-        a:hover { text-decoration: underline; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f6f8;
+            color: #333;
+        }
+        header {
+            background: #1e88e5;
+            color: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .timestamp {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .region-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .region-card:hover {
+            transform: translateY(-4px);
+        }
+        .region-card h2 {
+            margin: 0 0 10px;
+            font-size: 20px;
+        }
+        .status-icon {
+            font-size: 24px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        a {
+            text-decoration: none;
+            color: #1e88e5;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
         
 </style>
 </head><body>
+<<<<<<< HEAD
 <h1>🌍 Cloud Services Health Overview</h1><p><em>Last updated: 2025-08-07 13:41 UTC</em></p>
 <div class='services'>
+=======
+<header><h1>🌍 Cloud Services Health Overview</h1></header>
+<div class='container'>
+<p class='timestamp'><em>Last updated: 2025-08-07 14:04 UTC</em></p>
+<div class='grid'>
+>>>>>>> testing
 <div class='region-card'>
-<span class='status-icon'>🟢</span><a href='aws-eu-north-1.html'><h2>AWS-eu-north-1</h2></a>
+<h2><span class='status-icon'>🟢</span><a href='aws-eu-north-1.html'>AWS - EU-NORTH-1</a></h2>
 </div>
 <div class='region-card'>
-<span class='status-icon'>🟢</span><a href='aws-eu-central-1.html'><h2>AWS-eu-central-1</h2></a>
+<h2><span class='status-icon'>🟢</span><a href='aws-eu-central-1.html'>AWS - EU-CENTRAL-1</a></h2>
 </div>
 <div class='region-card'>
-<span class='status-icon'>🟢</span><a href='gcp-europe-north2.html'><h2>GCP-europe-north2</h2></a>
+<h2><span class='status-icon'>🟢</span><a href='gcp-europe-north2.html'>GCP - EUROPE-NORTH2</a></h2>
+</div>
+</div>
 </div>
 </body></html>
