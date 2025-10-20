@@ -12,11 +12,12 @@ def collect_aws_dashboard(feed_file_path):
 
         if entry:
             classification, emoji = classify_status(entry['title'], entry['summary'])
-            if classification == "down":
+            if classification in {"OUTAGE", "IMPACT", "DEGRADED"}:
                 healthy = False
             dashboard.append({
                 "name": service_name,
                 "emoji": emoji,
+                "classification": classification,
                 "title": entry['title'],
                 "summary": entry['summary'],
                 "published": entry['published'],
@@ -27,6 +28,7 @@ def collect_aws_dashboard(feed_file_path):
             dashboard.append({
                 "name": service_name,
                 "emoji": "🟢",
+                "classification": "NO_DATA",
                 "title": "No incidents reported",
                 "summary": "All systems operational.",
                 "published": "",

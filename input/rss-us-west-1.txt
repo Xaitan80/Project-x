@@ -1,0 +1,15 @@
+https://status.aws.amazon.com/rss/ec2-us-west-1.rss
+https://status.aws.amazon.com/rss/s3-us-west-1.rss
+https://status.aws.amazon.com/rss/iam-us-west-1.rss
+https://status.aws.amazon.com/rss/rds-us-west-1.rss
+https://status.aws.amazon.com/rss/ecs-us-west-1.rss
+https://status.aws.amazon.com/rss/eks-us-west-1.rss
+https://status.aws.amazon.com/rss/elasticache-us-west-1.rss
+https://status.aws.amazon.com/rss/elasticfilesystem-us-west-1.rss
+https://status.aws.amazon.com/rss/lambda-us-west-1.rss
+https://status.aws.amazon.com/rss/cloudfront-us-west-1.rss
+https://status.aws.amazon.com/rss/dynamodb-us-west-1.rss
+https://status.aws.amazon.com/rss/route53-us-west-1.rss
+https://status.aws.amazon.com/rss/apigateway-us-west-1.rss
+https://status.aws.amazon.com/rss/kinesis-us-west-1.rss
+https://status.aws.amazon.com/rss/redshift-us-west-1.rss

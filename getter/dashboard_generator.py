@@ -162,7 +162,13 @@ def generate_region_html(region, dashboard, output_path, provider="AWS"):
         "<a class='back-link' href='index.html'>&larr; Back to Overview</a>",
     ]
 
-    for service_data in dashboard:
+    # Prioritize impacted services at the top while preserving original order for others
+    dashboard_sorted = sorted(
+        enumerate(dashboard),
+        key=lambda item: (0 if item[1].get("classification") == "IMPACT" else 1, item[0])
+    )
+
+    for _, service_data in dashboard_sorted:
         emoji = service_data['emoji']
         name = service_data['name']
         title = service_data['title']
@@ -188,4 +194,3 @@ def generate_region_html(region, dashboard, output_path, provider="AWS"):
 
     html.append("</div></body></html>")
     Path(output_path).write_text("\n".join(html), encoding="utf-8")
-

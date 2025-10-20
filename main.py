@@ -8,7 +8,11 @@ from pathlib import Path
 if __name__ == "__main__":
     input_files = {
         "aws-eu-north-1": "input/rss-eu-north-1.txt",
-        "aws-eu-central-1": "input/rss-eu-central-1.txt"
+        "aws-eu-central-1": "input/rss-eu-central-1.txt",
+        "aws-us-east-1": "input/rss-us-east-1.txt",
+        "aws-us-east-2": "input/rss-us-east-2.txt",
+        "aws-us-west-1": "input/rss-us-west-1.txt",
+        "aws-us-west-2": "input/rss-us-west-2.txt"
     }
 
     region_dashboards = {}

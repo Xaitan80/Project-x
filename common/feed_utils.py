@@ -43,6 +43,8 @@ def classify_status(title, summary):
     """
     lower_title = title.lower()
     lower_summary = summary.lower()
+    if "service impact" in lower_title or "service impact" in lower_summary:
+        return ("IMPACT", "🔴")
 
     if "operational" in lower_title or "operational" in lower_summary:
         return ("OK", "🟢")
