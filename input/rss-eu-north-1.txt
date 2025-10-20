@@ -1,3 +1,4 @@
+https://status.aws.amazon.com/rss/multipleservices-eu-north-1.rss
 https://status.aws.amazon.com/rss/airflow-eu-north-1.rss
 https://status.aws.amazon.com/rss/kafka-eu-north-1.rss
 https://status.aws.amazon.com/rss/apigateway-eu-north-1.rss
@@ -48,4 +49,3 @@ https://status.aws.amazon.com/rss/kafka-eu-north-1.rss
 https://status.aws.amazon.com/rss/airflow-eu-north-1.rss
 https://status.aws.amazon.com/rss/memorydb-eu-north-1.rss
 https://status.aws.amazon.com/rss/mq-eu-north-1.rss
-
