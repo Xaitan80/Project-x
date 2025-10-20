@@ -12,7 +12,7 @@ def collect_aws_dashboard(feed_file_path):
 
         if entry:
             classification, emoji = classify_status(entry['title'], entry['summary'])
-            if classification in {"OUTAGE", "IMPACT", "DEGRADED"}:
+            if classification in {"OUTAGE", "IMPACT", "DISRUPTION", "DEGRADED"}:
                 healthy = False
             dashboard.append({
                 "name": service_name,

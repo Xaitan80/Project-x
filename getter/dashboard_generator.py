@@ -133,6 +133,11 @@ def generate_region_html(region, dashboard, output_path, provider="AWS"):
             border-left: 6px solid #e53935;
         }
 
+        .warning {
+            background: #fff8e1; /* light yellow */
+            border-left: 6px solid #ffb300;
+        }
+
         .service-card h2 {
             font-size: 20px;
             margin: 0 0 8px 0;
@@ -162,10 +167,11 @@ def generate_region_html(region, dashboard, output_path, provider="AWS"):
         "<a class='back-link' href='index.html'>&larr; Back to Overview</a>",
     ]
 
-    # Prioritize impacted services at the top while preserving original order for others
+    # Prioritize outage and impact cards while preserving original order within each group
+    priority_map = {"DISRUPTION": 0, "OUTAGE": 1, "IMPACT": 2, "DEGRADED": 3}
     dashboard_sorted = sorted(
         enumerate(dashboard),
-        key=lambda item: (0 if item[1].get("classification") == "IMPACT" else 1, item[0])
+        key=lambda item: (priority_map.get(item[1].get("classification"), 4), item[0])
     )
 
     for _, service_data in dashboard_sorted:
@@ -177,8 +183,13 @@ def generate_region_html(region, dashboard, output_path, provider="AWS"):
         link = service_data['link']
         feed_url = service_data['feed_url']
 
-        # Determine status based on emoji
-        card_class = "unhealthy" if emoji == "🔴" else "healthy"
+        classification = service_data.get("classification")
+        if classification in {"DISRUPTION", "OUTAGE"} or emoji == "🔴":
+            card_class = "unhealthy"
+        elif classification in {"IMPACT", "DEGRADED"} or emoji == "🟡":
+            card_class = "warning"
+        else:
+            card_class = "healthy"
 
         html.append(f"<div class='service-card {card_class}'>")
         html.append(f"<h2>{emoji} {name}</h2>")

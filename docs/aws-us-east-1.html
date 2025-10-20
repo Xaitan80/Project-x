@@ -28,6 +28,11 @@
             border-left: 6px solid #e53935;
         }
 
+        .warning {
+            background: #fff8e1; /* light yellow */
+            border-left: 6px solid #ffb300;
+        }
+
         .service-card h2 {
             font-size: 20px;
             margin: 0 0 8px 0;
@@ -53,41 +58,48 @@
 </head><body>
 <div class='container'>
 <h1>📍 AWS Status for US-EAST-1</h1>
-<p class='timestamp'><em>Last updated: 2025-10-20 08:57 UTC</em></p>
+<p class='timestamp'><em>Last updated: 2025-10-20 09:12 UTC</em></p>
 <a class='back-link' href='index.html'>&larr; Back to Overview</a>
 <div class='service-card unhealthy'>
-<h2>🔴 EC2-US-EAST-1</h2>
+<h2>🔴 DYNAMODB-US-EAST-1</h2>
+<strong>Service disruption: Amazon DynamoDB Operational Issue</strong><br>
+<p>Amazon DynamoDB in us-east-1 is impacted by an event that affects Multiple services. For more information, see the AWS Health Dashboard.</p>
+<p><em>Mon, 20 Oct 2025 02:01:01 PDT</em></p>
+<a class='rss-link' href='https://status.aws.amazon.com/rss/dynamodb-us-east-1.rss' target='_blank'>📡 View on Provider</a>
+</div>
+<div class='service-card warning'>
+<h2>🟡 EC2-US-EAST-1</h2>
 <strong>Service impact: Amazon Elastic Compute Cloud Operational Issue</strong><br>
 <p>Amazon Elastic Compute Cloud in us-east-1 is impacted by an event that affects Multiple services. For more information, see the AWS Health Dashboard.</p>
-<p><em>Mon, 20 Oct 2025 01:26:41 PDT</em></p>
+<p><em>Mon, 20 Oct 2025 02:01:01 PDT</em></p>
 <a class='rss-link' href='https://status.aws.amazon.com/rss/ec2-us-east-1.rss' target='_blank'>📡 View on Provider</a>
 </div>
-<div class='service-card unhealthy'>
-<h2>🔴 EKS-US-EAST-1</h2>
+<div class='service-card warning'>
+<h2>🟡 EKS-US-EAST-1</h2>
 <strong>Service impact: Amazon Elastic Kubernetes Service Operational Issue</strong><br>
 <p>Amazon Elastic Kubernetes Service in us-east-1 is impacted by an event that affects Multiple services. For more information, see the AWS Health Dashboard.</p>
-<p><em>Mon, 20 Oct 2025 01:26:41 PDT</em></p>
+<p><em>Mon, 20 Oct 2025 02:01:01 PDT</em></p>
 <a class='rss-link' href='https://status.aws.amazon.com/rss/eks-us-east-1.rss' target='_blank'>📡 View on Provider</a>
 </div>
-<div class='service-card unhealthy'>
-<h2>🔴 LAMBDA-US-EAST-1</h2>
+<div class='service-card warning'>
+<h2>🟡 LAMBDA-US-EAST-1</h2>
 <strong>Service impact: AWS Lambda Operational Issue</strong><br>
 <p>AWS Lambda in us-east-1 is impacted by an event that affects Multiple services. For more information, see the AWS Health Dashboard.</p>
-<p><em>Mon, 20 Oct 2025 01:26:41 PDT</em></p>
+<p><em>Mon, 20 Oct 2025 02:01:01 PDT</em></p>
 <a class='rss-link' href='https://status.aws.amazon.com/rss/lambda-us-east-1.rss' target='_blank'>📡 View on Provider</a>
 </div>
-<div class='service-card unhealthy'>
-<h2>🔴 APIGATEWAY-US-EAST-1</h2>
+<div class='service-card warning'>
+<h2>🟡 APIGATEWAY-US-EAST-1</h2>
 <strong>Service impact: Amazon API Gateway Operational Issue</strong><br>
 <p>Amazon API Gateway in us-east-1 is impacted by an event that affects Multiple services. For more information, see the AWS Health Dashboard.</p>
-<p><em>Mon, 20 Oct 2025 01:26:41 PDT</em></p>
+<p><em>Mon, 20 Oct 2025 02:01:01 PDT</em></p>
 <a class='rss-link' href='https://status.aws.amazon.com/rss/apigateway-us-east-1.rss' target='_blank'>📡 View on Provider</a>
 </div>
-<div class='service-card unhealthy'>
-<h2>🔴 KINESIS-US-EAST-1</h2>
+<div class='service-card warning'>
+<h2>🟡 KINESIS-US-EAST-1</h2>
 <strong>Service impact: Amazon Kinesis Data Streams Operational Issue</strong><br>
 <p>Amazon Kinesis Data Streams in us-east-1 is impacted by an event that affects Multiple services. For more information, see the AWS Health Dashboard.</p>
-<p><em>Mon, 20 Oct 2025 01:26:41 PDT</em></p>
+<p><em>Mon, 20 Oct 2025 02:01:01 PDT</em></p>
 <a class='rss-link' href='https://status.aws.amazon.com/rss/kinesis-us-east-1.rss' target='_blank'>📡 View on Provider</a>
 </div>
 <div class='service-card healthy'>
@@ -99,7 +111,7 @@
 <div class='service-card healthy'>
 <h2>⚪ IAM-US-EAST-1</h2>
 <strong>Feed Deprecated: This RSS Feed has been deprecated. Please check https://status.aws.amazon.com/ and update your bookmarks.</strong><br>
-<p><em>Mon, 20 Oct 2025 01:56:31 PDT</em></p>
+<p><em>Mon, 20 Oct 2025 02:12:31 PDT</em></p>
 <a class='rss-link' href='https://status.aws.amazon.com/rss/iam-us-east-1.rss' target='_blank'>📡 View on Provider</a>
 </div>
 <div class='service-card healthy'>
@@ -131,13 +143,6 @@
 <strong>No incidents reported</strong><br>
 <p>All systems operational.</p>
 <a class='rss-link' href='https://status.aws.amazon.com/rss/cloudfront-us-east-1.rss' target='_blank'>📡 View on Provider</a>
-</div>
-<div class='service-card healthy'>
-<h2>🟢 DYNAMODB-US-EAST-1</h2>
-<strong>Service disruption: Amazon DynamoDB Operational Issue</strong><br>
-<p>Amazon DynamoDB in us-east-1 is impacted by an event that affects Multiple services. For more information, see the AWS Health Dashboard.</p>
-<p><em>Mon, 20 Oct 2025 01:26:41 PDT</em></p>
-<a class='rss-link' href='https://status.aws.amazon.com/rss/dynamodb-us-east-1.rss' target='_blank'>📡 View on Provider</a>
 </div>
 <div class='service-card healthy'>
 <h2>🟢 ROUTE53-US-EAST-1</h2>

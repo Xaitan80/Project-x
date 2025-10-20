@@ -55,6 +55,7 @@ def collect_gcp_dashboard():
             dashboard.append({
                 "name": product_name,
                 "emoji": "🔴",
+                "classification": "OUTAGE",
                 "title": incident["title"],
                 "summary": incident["summary"],
                 "published": incident["published"],
@@ -65,6 +66,7 @@ def collect_gcp_dashboard():
             dashboard.append({
                 "name": product_name,
                 "emoji": "🟢",
+                "classification": "OK",
                 "title": "No incidents reported",
                 "summary": "All systems operational.",
                 "published": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
