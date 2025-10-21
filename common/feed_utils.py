@@ -43,6 +43,11 @@ def classify_status(title, summary):
     """
     lower_title = title.lower()
     lower_summary = summary.lower()
+    if ("service is operating normally" in lower_title or
+            "service is operating normally" in lower_summary or
+            "no incidents reported" in lower_title or
+            "no incidents reported" in lower_summary):
+        return ("OK", "🟢")
     if "service disruption" in lower_title or "service disruption" in lower_summary:
         return ("DISRUPTION", "🔴")
     if "service impact" in lower_title or "service impact" in lower_summary:
