@@ -1,4 +1,5 @@
 # Project-x
+Added more AWS sites, and during the event on october 18, i got to see the site work!
 Just my dumb stuff  
 This should create a dashboard with status information for the largest CSP's.  
 Starting with AWS and its europe-north-1 DC and GCP europe-north2 region.
