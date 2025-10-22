@@ -3,70 +3,28 @@
 <title>Cloud Service Dashboard</title>
 <style>
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f4f6f8;
-            color: #333;
-        }
-        header {
-            background: #1e88e5;
-            color: white;
-            padding: 20px 40px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 28px;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        .timestamp {
-            font-size: 14px;
-            color: #777;
-            margin-bottom: 20px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .region-card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-        }
-        .region-card:hover {
-            transform: translateY(-4px);
-        }
-        .region-card h2 {
-            margin: 0 0 10px;
-            font-size: 20px;
-        }
-        .status-icon {
-            font-size: 24px;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
-        a {
-            text-decoration: none;
-            color: #1e88e5;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background: linear-gradient(135deg, #edf2fb 0%, #e2f0d9 100%); color: #2f3437; min-height: 100vh; }
+        header { background: rgba(30, 136, 229, 0.92); color: white; padding: 30px 40px; box-shadow: 0 12px 24px rgba(30,136,229,0.25); position: sticky; top: 0; backdrop-filter: blur(8px); }
+        header h1 { margin: 0; font-size: 32px; letter-spacing: 0.5px; }
+        .container { max-width: 1100px; margin: 40px auto 80px; padding: 0 20px 60px; }
+        .timestamp { font-size: 14px; color: #455a64; margin-bottom: 20px; }
+        .status-banner { border-radius: 14px; padding: 16px 22px; margin-bottom: 30px; font-size: 18px; box-shadow: 0 20px 45px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 12px; }
+        .status-banner.ok { background: #e8f5e9; color: #2e7d32; }
+        .status-banner.warn { background: #fff3e0; color: #ef6c00; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+        .region-card { background: rgba(255,255,255,0.92); border-radius: 16px; padding: 22px; box-shadow: 0 18px 36px rgba(15,23,42,0.12); transition: transform 0.25s ease, box-shadow 0.25s ease; border: 1px solid rgba(255,255,255,0.6); backdrop-filter: blur(6px); }
+        .region-card:hover { transform: translateY(-6px); box-shadow: 0 24px 44px rgba(15,23,42,0.16); }
+        .region-card h2 { margin: 0 0 10px; font-size: 20px; display: flex; align-items: center; gap: 12px; }
+        .status-icon { font-size: 28px; }
+        a { text-decoration: none; color: #1565c0; }
+        a:hover { text-decoration: underline; }
         
 </style>
 </head><body>
 <header><h1>🌍 Cloud Services Health Overview</h1></header>
 <div class='container'>
-<p class='timestamp'><em>Last updated: 2025-10-22 08:12 UTC</em></p>
+<p class='timestamp'><em>Last updated: 2025-10-22 08:35 UTC</em></p>
+<div class='status-banner ok'>☕ All is good! You can go back to your coffee.</div>
 <div class='grid'>
 <div class='region-card'>
 <h2><span class='status-icon'>🟢</span><a href='aws-eu-north-1.html'>AWS - EU-NORTH-1</a></h2>
